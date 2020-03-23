@@ -1,4 +1,4 @@
-var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
+var makePopDancer = function(top, left, timeBetweenSteps) {
   // var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
    // Helloo !
   makeDancer.call(this, top, left, timeBetweenSteps)
@@ -13,20 +13,21 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   //   // other effects you can use on a jQuery-wrapped html tag.
   //   blinkyDancer.$node.toggle();
   // };
-  this.$node.attr('id','blinkydancer')
+  this.$node.attr('class','popdancer')
   // return blinkyDancer;
 };
-makeBlinkyDancer.prototype = Object.create(makeDancer.prototype)
-makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
+makePopDancer.prototype = Object.create(makeDancer.prototype)
+makePopDancer.prototype.constructor = makePopDancer;
 
-makeBlinkyDancer.prototype.oldStep = makeDancer.prototype.step;
+makePopDancer.prototype.oldStep = makeDancer.prototype.step;
 
-makeBlinkyDancer.prototype.step = function() {
+makePopDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
   this.oldStep();
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.toggle('1000')
-  this.$node.animate({top: Math.random()*this.top+300, left: Math.random()*this.left+500},2500)
-};
+  this.$node.toggleClass('popdancer2')
+  this.$node.animate({height:'100px', width:'100px'},1500)
+  this.$node.animate({height:'1px', width:'1px'},1500)
+}
